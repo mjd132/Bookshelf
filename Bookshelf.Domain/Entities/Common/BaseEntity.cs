@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Bookshelf.Domain.Entities.Common
 {
-    public class BaseEntity
+    public abstract class BaseEntity
     {
         public int Id { get; set; }
-        public DateTime CreatedAt { get; set; }
-        public DateTime ModifiedAt { get; set; }
-        public string ModifiedBy { get; set; }
-        public string CreatedBy { get; set; }
+        public DateTime? CreatedAt { get; set; }
+        public DateTime? ModifiedAt { get; set; }
+        public string? ModifiedBy { get; set; } 
+        public string? CreatedBy { get; set; } 
     }
 }
