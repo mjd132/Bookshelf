@@ -2,7 +2,7 @@
 using Bookshelf.Application.Contracts.Persistence;
 using MediatR;
 
-namespace Bookshelf.Application.Features.Book.Queries;
+namespace Bookshelf.Application.Features.Book.Queries.GetAllBook;
 
 public record GetBookQuery : IRequest<List<BookDto>>;
 
@@ -11,7 +11,7 @@ public class GetBookQueryHandler : IRequestHandler<GetBookQuery, List<BookDto>>
     private readonly IMapper _mapper;
     private readonly IBookRepository _bookRepository;
 
-    public GetBookQueryHandler(IMapper mapper,IBookRepository bookRepository)
+    public GetBookQueryHandler(IMapper mapper, IBookRepository bookRepository)
     {
         _mapper = mapper;
         _bookRepository = bookRepository;

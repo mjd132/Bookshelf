@@ -1,4 +1,4 @@
-﻿namespace Bookshelf.Application.Features.Book.Queries;
+﻿namespace Bookshelf.Application.Features.Book.Queries.GetAllBook;
 
 public class BookDto
 {
