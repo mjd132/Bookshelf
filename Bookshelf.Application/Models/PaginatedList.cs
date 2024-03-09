@@ -10,8 +10,7 @@ public class PaginatedList<T>
     public int TotalPages => (int)Math.Ceiling(TotalItems / (double)PageSize);
     public bool HasPreviousPage => PageNumber > 1;
     public bool HasNextPage => PageNumber < TotalPages;
-
-    public IReadOnlyList<T> Items { get; private set; }
+    public IReadOnlyList<T> Items { get; set; }
 
     public PaginatedList(IReadOnlyList<T> items, int count, int pageNumber, int pageSizes)
     {
@@ -31,9 +30,9 @@ public class PaginatedList<T>
 
 public static class PaginationExtensions
 {
-    public static Task<PaginatedList<T>> ToPaginatedListAsync<T>(this IQueryable<T> queryable, int pageNumber, int pageSize) where T : class
+    public static  Task<PaginatedList<T>> ToPaginatedListAsync<T>(this IQueryable<T> queryable, int pageNumber, int pageSize) where T : class
     {
-        return PaginatedList<T>.CreateAsync(queryable.AsNoTracking(), pageNumber, pageSize);
+        return  PaginatedList<T>.CreateAsync(queryable.AsNoTracking(), pageNumber, pageSize);
     }
 
 }

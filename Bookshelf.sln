@@ -18,10 +18,13 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bookshelf.Persistence", "Bookshelf.Persistence\Bookshelf.Persistence.csproj", "{5C905F2D-B9B3-44C9-A5AB-B2AE0FCC6670}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bookshelf.Infrastructure", "Bookshelf.Infrastructure\Bookshelf.Infrastructure.csproj", "{5BC62CD4-9384-496D-9CB8-472AE519986E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{14A71F6C-6D41-43FE-9DB2-412C79434EB3} = {14A71F6C-6D41-43FE-9DB2-412C79434EB3}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{8FFAC1E7-9F39-444B-9FB6-11610AC8108C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookshelf.Api", "Bookshelf.Api\Bookshelf.Api.csproj", "{EC85A949-7622-4985-BC5B-3FE23C55ED59}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bookshelf.Api", "Bookshelf.Api\Bookshelf.Api.csproj", "{EC85A949-7622-4985-BC5B-3FE23C55ED59}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

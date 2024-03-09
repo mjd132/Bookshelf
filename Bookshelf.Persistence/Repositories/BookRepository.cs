@@ -13,9 +13,9 @@ public class BookRepository : GenericRepository<Book>, IBookRepository
     {
     }
 
-    public Task<PaginatedList<Book>> GetAllBooks(int pageNumber, int pageSize)
+    public async Task<PaginatedList<Book>> GetBooksAsyncWithPagination(int pageNumber, int pageSize)
     {
-        return _context.Books.AsNoTracking().ToPaginatedListAsync(pageNumber, pageSize);
+        return await _context.Books.ToPaginatedListAsync(pageNumber, pageSize);
     }
 
     public async Task<bool> IsTitleUnique(string title)
@@ -23,5 +23,5 @@ public class BookRepository : GenericRepository<Book>, IBookRepository
         return await _context.Books.AnyAsync(x => x.Title == title);
     }
 
-    
+
 }

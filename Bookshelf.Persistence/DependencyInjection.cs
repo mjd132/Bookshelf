@@ -12,11 +12,14 @@ public static class DependencyInjection
 {
     public static IServiceCollection AddPersistenceSevices(this IServiceCollection services, IConfiguration configuraion)
     {
-        services.AddDbContext<ApplicationDbContext>(options => { options.UseSqlite(configuraion.GetConnectionString("SqliteDatabase")); });
+        services.AddDbContext<ApplicationDbContext>(options =>
+        {
+            options.UseSqlite(configuraion.GetConnectionString("SqliteDatabase"));
+        });
 
-        services.AddScoped(typeof(IGenericRepository<>), typeof(IGenericRepository<>));
-        services.AddScoped<IBookRepository, IBookRepository>();
-        services.AddScoped<IAuthorRepository, IAuthorRepository>();
+        services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+        services.AddScoped<IBookRepository, BookRepository>();
+        services.AddScoped<IAuthorRepository, AuthorRepository>();
         services.AddScoped<IPublisherRepository, PublisherRepository>();
 
         return services;

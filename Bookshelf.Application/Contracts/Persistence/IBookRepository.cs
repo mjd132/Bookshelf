@@ -6,6 +6,6 @@ namespace Bookshelf.Application.Contracts.Persistence;
 public interface IBookRepository : IGenericRepository<Book>
 {
     Task<bool> IsTitleUnique(string title);
-    Task<PaginatedList<Book>> GetAllBooks(int pageNumber,int pageSize);
+    Task<PaginatedList<Book>> GetBooksAsyncWithPagination(int pageNumber,int pageSize);
     
 }
