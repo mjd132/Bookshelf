@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33723.286
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookshelf.Web", "Bookshelf\Bookshelf.Web.csproj", "{A2CD7195-FC03-4651-9288-71336EE9F853}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bookshelf.Web", "Bookshelf\Bookshelf.Web.csproj", "{A2CD7195-FC03-4651-9288-71336EE9F853}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{C98A69EA-63C0-4DC2-B3EE-62484EC7385C}"
 EndProject
@@ -11,15 +11,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{3A6B199B-D
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{AE933CF5-55BE-452A-B247-AAAF7E715018}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookshelf.Application", "Bookshelf.Application\Bookshelf.Application.csproj", "{14A71F6C-6D41-43FE-9DB2-412C79434EB3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bookshelf.Application", "Bookshelf.Application\Bookshelf.Application.csproj", "{14A71F6C-6D41-43FE-9DB2-412C79434EB3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookshelf.Domain", "Bookshelf.Domain\Bookshelf.Domain.csproj", "{1A00A205-F34A-4057-A066-7F5908CF3C8A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bookshelf.Domain", "Bookshelf.Domain\Bookshelf.Domain.csproj", "{1A00A205-F34A-4057-A066-7F5908CF3C8A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookshelf.Persistence", "Bookshelf.Persistence\Bookshelf.Persistence.csproj", "{5C905F2D-B9B3-44C9-A5AB-B2AE0FCC6670}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bookshelf.Persistence", "Bookshelf.Persistence\Bookshelf.Persistence.csproj", "{5C905F2D-B9B3-44C9-A5AB-B2AE0FCC6670}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookshelf.Infrastructure", "Bookshelf.Infrastructure\Bookshelf.Infrastructure.csproj", "{5BC62CD4-9384-496D-9CB8-472AE519986E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bookshelf.Infrastructure", "Bookshelf.Infrastructure\Bookshelf.Infrastructure.csproj", "{5BC62CD4-9384-496D-9CB8-472AE519986E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{8FFAC1E7-9F39-444B-9FB6-11610AC8108C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookshelf.Api", "Bookshelf.Api\Bookshelf.Api.csproj", "{EC85A949-7622-4985-BC5B-3FE23C55ED59}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,6 +49,10 @@ Global
 		{5BC62CD4-9384-496D-9CB8-472AE519986E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5BC62CD4-9384-496D-9CB8-472AE519986E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5BC62CD4-9384-496D-9CB8-472AE519986E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC85A949-7622-4985-BC5B-3FE23C55ED59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC85A949-7622-4985-BC5B-3FE23C55ED59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC85A949-7622-4985-BC5B-3FE23C55ED59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC85A949-7622-4985-BC5B-3FE23C55ED59}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -59,6 +65,7 @@ Global
 		{1A00A205-F34A-4057-A066-7F5908CF3C8A} = {3A6B199B-D9E6-47C0-9554-224E156E0073}
 		{5C905F2D-B9B3-44C9-A5AB-B2AE0FCC6670} = {AE933CF5-55BE-452A-B247-AAAF7E715018}
 		{5BC62CD4-9384-496D-9CB8-472AE519986E} = {AE933CF5-55BE-452A-B247-AAAF7E715018}
+		{EC85A949-7622-4985-BC5B-3FE23C55ED59} = {AE933CF5-55BE-452A-B247-AAAF7E715018}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {065AA59C-5424-4BE8-BF99-4A602ACAFEDD}
