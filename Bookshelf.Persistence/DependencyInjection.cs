@@ -10,7 +10,7 @@ namespace Bookshelf.Persistence;
 
 public static class DependencyInjection
 {
-    public static IServiceCollection PersistenceSevices(this IServiceCollection services, IConfiguration configuraion)
+    public static IServiceCollection AddPersistenceSevices(this IServiceCollection services, IConfiguration configuraion)
     {
         services.AddDbContext<ApplicationDbContext>(options => { options.UseSqlite(configuraion.GetConnectionString("SqliteDatabase")); });
 
