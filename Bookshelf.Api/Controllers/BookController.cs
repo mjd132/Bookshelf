@@ -1,4 +1,7 @@
-﻿using Bookshelf.Application.Features.Book.Queries.GetAllBook;
+﻿using Bookshelf.Application.Features.Book.Commands;
+using Bookshelf.Application.Features.Book.Queries.GetAllBook;
+using Bookshelf.Application.Features.Book.Queries.GetBookDetails;
+using Bookshelf.Application.Models;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,41 +21,53 @@ namespace Bookshelf.Api.Controllers
         }
         // GET: api/<BookController>
         [HttpGet]
-        public async Task<IActionResult> Get([FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 10)
+        public async Task<ActionResult<PaginatedList<BookDto>>> Get([FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 10)
         {
             var booksPaginated = await _mediator.Send(new GetBookQuery
             {
                 PageNumber = pageNumber,
                 PageSize = pageSize
             });
-            
-            return Ok(booksPaginated);
+
+            return booksPaginated;
 
         }
 
-        // GET api/<BookController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        // GET api/<BookController>/book-5
+        [HttpGet("book-{id}")]
+        public async Task<ActionResult<BookDetailsDto>> Get(int id)
         {
-            return "value";
+            var response = await _mediator.Send(new GetBookDetailsQuery(id));
+
+            return Ok(response);
         }
 
         // POST api/<BookController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<IActionResult> Create([FromBody] CreateBookCommand request)
         {
+            var response = await _mediator.Send(request);
+
+            return CreatedAtAction(nameof(Get), new { id = response });
         }
 
         // PUT api/<BookController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPut]
+        public async Task<ActionResult> Update([FromBody] UpdateBookCommand request)
         {
+
+            await _mediator.Send(request);
+            return NoContent();
         }
 
         // DELETE api/<BookController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task<ActionResult> Delete(int id)
         {
+
+            await _mediator.Send(new DeleteBookCommand(id));
+            return NoContent();
+
         }
     }
 }
