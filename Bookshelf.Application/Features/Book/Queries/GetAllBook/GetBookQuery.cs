@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using Bookshelf.Application.Contracts.Persistence;
-using Bookshelf.Application.Exceptions;
-using Bookshelf.Application.Features.Book.Commands;
 using Bookshelf.Application.Models;
+using Bookshelf.Domain.Entities;
+using FluentValidation;
 using MediatR;
 
 namespace Bookshelf.Application.Features.Book.Queries.GetAllBook;
@@ -19,24 +19,25 @@ public class GetBookQueryHandler : IRequestHandler<GetBookQuery, PaginatedList<B
 {
     private readonly IMapper _mapper;
     private readonly IBookRepository _bookRepository;
+    private readonly IValidator<GetBookQuery> _validator;
 
-    public GetBookQueryHandler(IMapper mapper, IBookRepository bookRepository)
+    public GetBookQueryHandler(IMapper mapper, IBookRepository bookRepository, IValidator<GetBookQuery> validator)
     {
         _mapper = mapper;
         _bookRepository = bookRepository;
+        _validator = validator;
     }
+
     public async Task<PaginatedList<BookDto>> Handle(GetBookQuery request, CancellationToken cancellationToken)
     {
 
         //validation
-        var validator = new GetBookQueryValidator();
-        var validationResult = await validator.ValidateAsync(request, cancellationToken);
-
-        if (validationResult.Errors.Any())
-            throw new BadRequestException("Invalid Request for Getting Books", validationResult);
+        await _validator.ValidateAndThrowAsync(request, cancellationToken);
 
         // get books from repository
         var books = await _bookRepository.GetBooksAsyncWithPagination(request.PageNumber, request.PageSize);
+
+
 
         // mapping Book to BookDto
         var booksDto = _mapper.Map<PaginatedList<BookDto>>(books);

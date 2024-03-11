@@ -2,6 +2,7 @@
 using Bookshelf.Application.Contracts.Persistence;
 using Bookshelf.Application.Exceptions;
 using Bookshelf.Domain.Entities;
+using FluentValidation;
 using MediatR;
 using System.ComponentModel.DataAnnotations;
 
@@ -10,36 +11,34 @@ namespace Bookshelf.Application.Features.Book.Commands;
 public class CreateBookCommand : IRequest<int>
 {
     public string Title { get; set; } = string.Empty;
-    public string? Description { get; set; } = string.Empty;
-    public DateTime? PublishedDate { get; set; }
+    public string Description { get; set; } = string.Empty;
+    public DateTime PublishedDate { get; set; }
     //public ICollection<Author>? Authors { get; set; }
-    public string? ImageUrl { get; set; }
-    public int? PagesCount { get; set; }
-    public string? ISBN { get; set; }
-    public string? Language { get; set; }
+    public string ImageUrl { get; set; } = string.Empty;
+    public int PagesCount { get; set; }
+    public string ISBN { get; set; } = string.Empty;
+    public string Language { get; set; } = string.Empty;
     //public int? PublisherId { get; set; }
     //public Publisher? Publisher { get; set; }
-    public float? Price { get; set; }
+    public float Price { get; set; }
 }
 
 public class CreateBookCommandHandler : IRequestHandler<CreateBookCommand, int>
 {
     private readonly IMapper _mapper;
     private readonly IBookRepository _bookRepository;
+    private readonly IValidator<CreateBookCommand> _validator;
 
-    public CreateBookCommandHandler(IMapper mapper, IBookRepository bookRepository)
+    public CreateBookCommandHandler(IMapper mapper, IBookRepository bookRepository,IValidator<CreateBookCommand> validator)
     {
         _mapper = mapper;
         _bookRepository = bookRepository;
+        _validator = validator;
     }
     public async Task<int> Handle(CreateBookCommand request, CancellationToken cancellationToken)
     {
         //vaildate
-        var validator = new CreateBookCommandValidator(_bookRepository);
-        var validationResult = await validator.ValidateAsync(request, cancellationToken);
-
-        if (!validationResult.Errors.Any())
-            throw new BadRequestException("Invalid Book", validationResult);
+        await _validator.ValidateAndThrowAsync(request,cancellationToken);
          
         //convert to domain entity object 
         var book = _mapper.Map<Domain.Entities.Book>(request);

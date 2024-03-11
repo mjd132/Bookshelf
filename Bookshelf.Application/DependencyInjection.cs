@@ -1,4 +1,5 @@
-﻿using FluentValidation;
+﻿using Bookshelf.Application.Common.Validation;
+using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
@@ -12,7 +13,11 @@ namespace Bookshelf.Application
 
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
-            services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
+            services.AddMediatR(cfg =>
+            {
+                cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
+                cfg.AddOpenBehavior(typeof(ValidationBehavior<,>));
+            });
 
             return services;
         }

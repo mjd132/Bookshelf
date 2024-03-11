@@ -1,3 +1,4 @@
+using Bookshelf.Api.Middlewares;
 using Bookshelf.Application;
 using Bookshelf.Persistence;
 
@@ -33,4 +34,5 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+app.UseMiddleware<ValidationExceptionHandlingMiddleware>();
 app.Run();

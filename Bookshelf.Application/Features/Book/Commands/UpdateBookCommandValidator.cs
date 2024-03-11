@@ -1,28 +1,29 @@
 ﻿using Bookshelf.Application.Contracts.Persistence;
 using FluentValidation;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace Bookshelf.Application.Features.Book.Commands;
 
-public class CreateBookCommandValidator : AbstractValidator<CreateBookCommand>
+public class UpdateBookCommandValidator : AbstractValidator<UpdateBookCommand>
 {
     private readonly IBookRepository _bookRepository;
 
-    public CreateBookCommandValidator(IBookRepository bookRepository)
+    public UpdateBookCommandValidator(IBookRepository bookRepository)
     {
         _bookRepository = bookRepository;
 
         RuleFor(p => p.Title).NotEmpty();
         RuleFor(q => q).MustAsync(BookTitleUnique).WithMessage("Title is repetitive");
-        //todo : ISBN validator
-
+        RuleFor(p => p.Id).NotNull().NotEmpty();
 
     }
-    private async Task<bool> BookTitleUnique(CreateBookCommand command, CancellationToken token)
+
+    private async Task<bool> BookTitleUnique(UpdateBookCommand command, CancellationToken token)
     {
         var res = await _bookRepository.IsTitleUnique(command.Title);
 
         return !res;
     }
+
+
 
 }

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Bookshelf.Application.Features.Book.Commands;
 using Bookshelf.Application.Features.Book.Queries.GetAllBook;
 using Bookshelf.Application.Features.Book.Queries.GetBookDetails;
 using Bookshelf.Domain.Entities;
@@ -11,7 +12,9 @@ namespace Bookshelf.Application.MappingProfile
         {
             CreateMap<BookDto, Book>().ReverseMap();
             CreateMap<BookDetailsDto, Book>().ReverseMap();
-
+            CreateMap<CreateBookCommand , Book>();
+            CreateMap<UpdateBookCommand , Book>();
+            
         }
     }
 }
