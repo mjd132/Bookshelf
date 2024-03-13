@@ -1,4 +1,5 @@
 ﻿using Bookshelf.Application.Common.Validation;
+using Bookshelf.Application.Models;
 using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
@@ -10,6 +11,8 @@ namespace Bookshelf.Application
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+
+            services.AddScoped(typeof(IValidator<PaginatedList<Domain.Entities.Book>>), typeof(PaginatedListValidator<Domain.Entities.Book>));
 
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
 

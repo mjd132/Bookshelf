@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Bookshelf.Application.Exceptions;
+using Microsoft.EntityFrameworkCore;
 
 namespace Bookshelf.Application.Models;
 
@@ -24,15 +25,7 @@ public class PaginatedList<T>
     {
         var count = await source.CountAsync();
         var items = await source.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToListAsync();
-        return new PaginatedList<T>(items,count,pageNumber,pageSize);
+        return new PaginatedList<T>(items, count, pageNumber, pageSize);
     }
 }
 
-public static class PaginationExtensions
-{
-    public static  Task<PaginatedList<T>> ToPaginatedListAsync<T>(this IQueryable<T> queryable, int pageNumber, int pageSize) where T : class
-    {
-        return  PaginatedList<T>.CreateAsync(queryable.AsNoTracking(), pageNumber, pageSize);
-    }
-
-}

@@ -19,25 +19,20 @@ public class GetBookQueryHandler : IRequestHandler<GetBookQuery, PaginatedList<B
 {
     private readonly IMapper _mapper;
     private readonly IBookRepository _bookRepository;
-    private readonly IValidator<GetBookQuery> _validator;
+    private readonly IValidator<PaginatedList<Domain.Entities.Book>> _paginationValidator;
 
-    public GetBookQueryHandler(IMapper mapper, IBookRepository bookRepository, IValidator<GetBookQuery> validator)
+    public GetBookQueryHandler(IMapper mapper, IBookRepository bookRepository ,IValidator<PaginatedList<Domain.Entities.Book>> paginationValidator)
     {
         _mapper = mapper;
         _bookRepository = bookRepository;
-        _validator = validator;
+        _paginationValidator = paginationValidator;
     }
 
     public async Task<PaginatedList<BookDto>> Handle(GetBookQuery request, CancellationToken cancellationToken)
     {
 
-        //validation
-        await _validator.ValidateAndThrowAsync(request, cancellationToken);
-
-        // get books from repository
-        var books = await _bookRepository.GetBooksAsyncWithPagination(request.PageNumber, request.PageSize);
-
-
+        // get books from repository and validate
+        var books = await _bookRepository.GetBooksAsyncWithPagination(request.PageNumber, request.PageSize).IsValidPaginationAsync(_paginationValidator, cancellationToken);
 
         // mapping Book to BookDto
         var booksDto = _mapper.Map<PaginatedList<BookDto>>(books);
