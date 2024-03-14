@@ -1,4 +1,5 @@
-﻿using Bookshelf.Domain.Entities.Common;
+﻿using Bookshelf.Application.Models;
+using Bookshelf.Domain.Entities.Common;
 
 namespace Bookshelf.Application.Contracts.Persistence;
 
@@ -9,5 +10,6 @@ public interface IGenericRepository<T> where T : BaseEntity
     Task CreateAsync(T entity);
     Task UpdateAsync(T entity);
     Task DeleteAsync(T entity);
+    Task<PaginatedList<T>> GetWithPaginationAync(int pageNumber , int pageSize);
 
 }

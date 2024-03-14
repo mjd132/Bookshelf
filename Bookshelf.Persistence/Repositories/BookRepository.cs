@@ -13,11 +13,6 @@ public class BookRepository : GenericRepository<Book>, IBookRepository
     {
     }
 
-    public async Task<PaginatedList<Book>> GetBooksAsyncWithPagination(int pageNumber, int pageSize)
-    {
-        return await _context.Books.ToPaginatedListAsync(pageNumber, pageSize);
-    }
-
     public async Task<bool> IsTitleUnique(string title)
     {
         return await _context.Books.AnyAsync(x => x.Title == title);

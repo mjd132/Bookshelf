@@ -32,7 +32,7 @@ public class GetBookQueryHandler : IRequestHandler<GetBookQuery, PaginatedList<B
     {
 
         // get books from repository and validate
-        var books = await _bookRepository.GetBooksAsyncWithPagination(request.PageNumber, request.PageSize).IsValidPaginationAsync(_paginationValidator, cancellationToken);
+        var books = await _bookRepository.GetWithPaginationAync(request.PageNumber, request.PageSize).IsValidPaginationAsync(_paginationValidator, cancellationToken);
 
         // mapping Book to BookDto
         var booksDto = _mapper.Map<PaginatedList<BookDto>>(books);
