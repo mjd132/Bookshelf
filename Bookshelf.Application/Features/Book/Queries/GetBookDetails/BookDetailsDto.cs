@@ -1,4 +1,5 @@
-﻿namespace Bookshelf.Application.Features.Book.Queries.GetBookDetails;
+﻿using Bookshelf.Application.Features.Author.Queries.GetAllAuthors;
+namespace Bookshelf.Application.Features.Book.Queries.GetBookDetails;
 
 public class BookDetailsDto
 {
@@ -6,7 +7,7 @@ public class BookDetailsDto
     public string Title { get; set; } = string.Empty;
     public string Description { get; set; } = string.Empty;
     public DateTime PublishedDate { get; set; }
-    //public ICollection<Author> Authors { get; set; }
+    public ICollection<AuthorDto>? Authors { get; set; }
     public string ImageUrl { get; set; } = string.Empty;
     public int PagesCount { get; set; }
     public string ISBN { get; set; } = string.Empty;

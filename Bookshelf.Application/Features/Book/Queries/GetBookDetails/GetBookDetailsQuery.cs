@@ -18,7 +18,7 @@ public class GetBookDetailsQueryHandler : IRequestHandler<GetBookDetailsQuery, B
     }
     public async Task<BookDetailsDto> Handle(GetBookDetailsQuery request, CancellationToken cancellationToken)
     {
-        var book = await _bookRepository.GetByIdAsync(request.Id);
+        var book = await _bookRepository.GetBookDetailById(request.Id);
 
         if (book == null)
             throw new NotFoundException(nameof(Book), request.Id);

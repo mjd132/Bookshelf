@@ -6,5 +6,5 @@ public interface IBookRepository : IGenericRepository<Book>
 {
     Task<bool> IsTitleUnique(string title);
 
-
+    Task<Book> GetBookDetailById(int id);
 }
