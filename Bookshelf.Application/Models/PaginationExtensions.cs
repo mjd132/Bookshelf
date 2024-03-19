@@ -24,7 +24,7 @@ public static class PaginationExtensions
 
             throw new Exceptions.ValidationException(validationErros);
         }
-        
+
 
         return paginatedList;
     }

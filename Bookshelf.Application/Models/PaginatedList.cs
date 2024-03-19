@@ -1,5 +1,4 @@
-﻿using Bookshelf.Application.Exceptions;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace Bookshelf.Application.Models;
 

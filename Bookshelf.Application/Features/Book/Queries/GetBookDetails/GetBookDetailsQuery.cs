@@ -20,11 +20,12 @@ public class GetBookDetailsQueryHandler : IRequestHandler<GetBookDetailsQuery, B
     {
         var book = await _bookRepository.GetByIdAsync(request.Id);
 
-        if(book == null) 
-            throw new NotFoundException(nameof(Book),request.Id);
+        if (book == null)
+            throw new NotFoundException(nameof(Book), request.Id);
 
         var data = _mapper.Map<BookDetailsDto>(book);
 
         return data;
     }
 }
+

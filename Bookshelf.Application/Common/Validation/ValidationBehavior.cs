@@ -1,5 +1,4 @@
-﻿using Bookshelf.Application.Exceptions;
-using FluentValidation;
+﻿using FluentValidation;
 using MediatR;
 
 namespace Bookshelf.Application.Common.Validation;

@@ -1,9 +1,4 @@
-﻿using AutoMapper;
-using Bookshelf.Application.Contracts.Persistence;
-using Bookshelf.Domain.Entities;
-using MediatR;
-
-namespace Bookshelf.Application.Features.Book.Queries.GetBookDetails;
+﻿namespace Bookshelf.Application.Features.Book.Queries.GetBookDetails;
 
 public class BookDetailsDto
 {

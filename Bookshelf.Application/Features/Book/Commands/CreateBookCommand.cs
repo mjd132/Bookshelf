@@ -1,10 +1,7 @@
 ﻿using AutoMapper;
 using Bookshelf.Application.Contracts.Persistence;
-using Bookshelf.Application.Exceptions;
-using Bookshelf.Domain.Entities;
 using FluentValidation;
 using MediatR;
-using System.ComponentModel.DataAnnotations;
 
 namespace Bookshelf.Application.Features.Book.Commands;
 
@@ -29,7 +26,7 @@ public class CreateBookCommandHandler : IRequestHandler<CreateBookCommand, int>
     private readonly IBookRepository _bookRepository;
     private readonly IValidator<CreateBookCommand> _validator;
 
-    public CreateBookCommandHandler(IMapper mapper, IBookRepository bookRepository,IValidator<CreateBookCommand> validator)
+    public CreateBookCommandHandler(IMapper mapper, IBookRepository bookRepository, IValidator<CreateBookCommand> validator)
     {
         _mapper = mapper;
         _bookRepository = bookRepository;
@@ -38,8 +35,8 @@ public class CreateBookCommandHandler : IRequestHandler<CreateBookCommand, int>
     public async Task<int> Handle(CreateBookCommand request, CancellationToken cancellationToken)
     {
         //vaildate
-        await _validator.ValidateAndThrowAsync(request,cancellationToken);
-         
+        await _validator.ValidateAndThrowAsync(request, cancellationToken);
+
         //convert to domain entity object 
         var book = _mapper.Map<Domain.Entities.Book>(request);
 

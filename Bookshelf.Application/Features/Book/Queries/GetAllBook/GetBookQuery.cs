@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using Bookshelf.Application.Contracts.Persistence;
 using Bookshelf.Application.Models;
-using Bookshelf.Domain.Entities;
 using FluentValidation;
 using MediatR;
 
@@ -21,7 +20,7 @@ public class GetBookQueryHandler : IRequestHandler<GetBookQuery, PaginatedList<B
     private readonly IBookRepository _bookRepository;
     private readonly IValidator<PaginatedList<Domain.Entities.Book>> _paginationValidator;
 
-    public GetBookQueryHandler(IMapper mapper, IBookRepository bookRepository ,IValidator<PaginatedList<Domain.Entities.Book>> paginationValidator)
+    public GetBookQueryHandler(IMapper mapper, IBookRepository bookRepository, IValidator<PaginatedList<Domain.Entities.Book>> paginationValidator)
     {
         _mapper = mapper;
         _bookRepository = bookRepository;

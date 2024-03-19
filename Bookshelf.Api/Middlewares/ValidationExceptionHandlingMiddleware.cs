@@ -1,5 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Bookshelf.Application.Exceptions;
+﻿using Bookshelf.Application.Exceptions;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Bookshelf.Api.Middlewares;
 
@@ -10,7 +10,7 @@ public class ValidationExceptionHandlingMiddleware
     public ValidationExceptionHandlingMiddleware(RequestDelegate next)
     {
         _next = next;
-        
+
     }
 
     public async Task InvokeAsync(HttpContext context)

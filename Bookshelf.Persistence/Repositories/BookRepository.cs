@@ -1,5 +1,4 @@
 ﻿using Bookshelf.Application.Contracts.Persistence;
-using Bookshelf.Application.Models;
 using Bookshelf.Domain.Entities;
 using Bookshelf.Persistence.DatabaseContext;
 using Microsoft.EntityFrameworkCore;

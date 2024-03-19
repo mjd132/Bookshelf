@@ -3,7 +3,6 @@ using Bookshelf.Application.Models;
 using Bookshelf.Domain.Entities.Common;
 using Bookshelf.Persistence.DatabaseContext;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.VisualBasic;
 
 namespace Bookshelf.Persistence.Repositories;
 
@@ -35,7 +34,7 @@ public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
 
     public async Task<T> GetByIdAsync(int id)
     {
-        return await _context.Set<T>().AsNoTracking().FirstOrDefaultAsync(q =>q.Id ==id);
+        return await _context.Set<T>().AsNoTracking().FirstOrDefaultAsync(q => q.Id == id);
     }
 
     public async Task<PaginatedList<T>> GetWithPaginationAync(int pageNumber, int pageSize)

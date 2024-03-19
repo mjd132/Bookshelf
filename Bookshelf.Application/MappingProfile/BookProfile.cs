@@ -12,9 +12,9 @@ namespace Bookshelf.Application.MappingProfile
         {
             CreateMap<BookDto, Book>().ReverseMap();
             CreateMap<BookDetailsDto, Book>().ReverseMap();
-            CreateMap<CreateBookCommand , Book>();
-            CreateMap<UpdateBookCommand , Book>();
-            
+            CreateMap<CreateBookCommand, Book>();
+            CreateMap<UpdateBookCommand, Book>();
+
         }
     }
 }

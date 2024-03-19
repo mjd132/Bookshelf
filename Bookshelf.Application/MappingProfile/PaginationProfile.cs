@@ -15,7 +15,7 @@ public class PaginationProfile : Profile
             .ConvertUsing(typeof(PaginatedListConverter<,>));
 
     }
-    
+
 }
 public class PaginatedListConverter<TSource, TDest> : ITypeConverter<PaginatedList<TSource>, PaginatedList<TDest>>
 {

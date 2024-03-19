@@ -9,11 +9,11 @@ public class ValidationException : Exception
     {
         Errors = errors;
     }
-    public ValidationException(IEnumerable<ValidationError> errors,int StatusCode)
+    public ValidationException(IEnumerable<ValidationError> errors, int StatusCode)
     {
         Errors = errors;
     }
-    public ValidationException(IEnumerable<ValidationError> errors,string StatusCode)
+    public ValidationException(IEnumerable<ValidationError> errors, string StatusCode)
     {
         Errors = errors;
     }

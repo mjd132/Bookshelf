@@ -1,6 +1,5 @@
 ﻿using Bookshelf.Application.Contracts.Persistence;
 using FluentValidation;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace Bookshelf.Application.Features.Book.Commands;
 

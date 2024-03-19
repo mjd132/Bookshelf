@@ -1,7 +1,5 @@
-﻿using AutoMapper;
-using Bookshelf.Application.Contracts.Persistence;
+﻿using Bookshelf.Application.Contracts.Persistence;
 using Bookshelf.Application.Exceptions;
-using Bookshelf.Domain.Entities;
 using MediatR;
 
 namespace Bookshelf.Application.Features.Book.Commands;
