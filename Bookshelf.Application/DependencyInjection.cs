@@ -13,7 +13,8 @@ namespace Bookshelf.Application
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 
             services.AddScoped(typeof(IValidator<PaginatedList<Domain.Entities.Book>>), typeof(PaginatedListValidator<Domain.Entities.Book>));
-
+            services.AddScoped(typeof(IValidator<PaginatedList<Domain.Entities.Author>>), typeof(PaginatedListValidator<Domain.Entities.Author>));
+            services.AddScoped(typeof(IValidator<PaginatedList<Domain.Entities.Publisher>>), typeof(PaginatedListValidator<Domain.Entities.Publisher>));
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
             services.AddMediatR(cfg =>
