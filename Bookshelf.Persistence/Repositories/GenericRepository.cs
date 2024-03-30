@@ -60,8 +60,10 @@ public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
 
         await _context.SaveChangesAsync();
     }
-    public async Task<ICollection<TEntity>> UpdateRelatedEntity<TEntity>(ICollection<TEntity> originalNavigationProperty, ICollection<TEntity> forUpdateNavigationProperty, string navigationPropertyName = null) where TEntity : BaseEntity
+    public async Task<ICollection<TEntity>> UpdateRelatedEntityAsync<TEntity>(ICollection<TEntity> originalNavigationProperty=null, ICollection<TEntity> forUpdateNavigationProperty=null) where TEntity : BaseEntity
     {
+        if(originalNavigationProperty == null) originalNavigationProperty = new List<TEntity>();
+        if(forUpdateNavigationProperty == null) forUpdateNavigationProperty = new List<TEntity>();
 
         HashSet<int> toRemoveListId = new();
         HashSet<int> toAddListId = new();
