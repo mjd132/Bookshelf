@@ -11,16 +11,8 @@ public class BookRepository : GenericRepository<Book>, IBookRepository
     public BookRepository(ApplicationDbContext context) : base(context)
     {
     }
-
-    public async Task<Book> GetBookDetailById(int id)
-    {
-        return  await _context.Books.Include(p=>p.Authors).FirstOrDefaultAsync(p=>p.Id == id);
-    }
-
     public async Task<bool> IsTitleUnique(string title)
     {
         return await _context.Books.AnyAsync(x => x.Title == title);
     }
-
-
 }

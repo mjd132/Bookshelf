@@ -2,6 +2,7 @@
 using Bookshelf.Domain.Entities;
 using Bookshelf.Persistence.DatabaseContext;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 
 namespace Bookshelf.Persistence.Repositories;
 
@@ -11,9 +12,4 @@ public class AuthorRepository : GenericRepository<Author>, IAuthorRepository
     {
     }
 
-    public async Task<Author> GetAuthorByIdAsync(int id)
-    {
-
-        return await _context.Authors.Include(p => p.Books).FirstOrDefaultAsync(x => x.Id == id);
-    }
 }
