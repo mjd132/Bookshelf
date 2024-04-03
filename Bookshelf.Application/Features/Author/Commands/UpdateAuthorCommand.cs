@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Bookshelf.Application.Contracts.Persistence;
+using Bookshelf.Application.Exceptions;
 using FluentValidation;
 using MediatR;
 
@@ -28,6 +29,8 @@ public class UpdateAuthorCommandHandler : IRequestHandler<UpdateAuthorCommand, U
     public async Task<Unit> Handle(UpdateAuthorCommand request, CancellationToken cancellationToken)
     {
         var author = _mapper.Map<Domain.Entities.Author>(request);
+
+        if(author==null) throw new NotFoundException(nameof(Author),request.Id);
 
         await _authorRepository.UpdateAsync(author);
 
