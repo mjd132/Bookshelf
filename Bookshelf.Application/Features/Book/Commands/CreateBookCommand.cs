@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Bookshelf.Application.Contracts.Persistence;
+using Bookshelf.Application.Features.Author.Queries.GetAllAuthors;
 using FluentValidation;
 using MediatR;
 
@@ -10,7 +11,7 @@ public class CreateBookCommand : IRequest<int>
     public string Title { get; set; } = string.Empty;
     public string Description { get; set; } = string.Empty;
     public DateTime PublishedDate { get; set; }
-    //public ICollection<Author>? Authors { get; set; }
+    public ICollection<AuthorDto>? Authors { get; set; }
     public string ImageUrl { get; set; } = string.Empty;
     public int PagesCount { get; set; }
     public string ISBN { get; set; } = string.Empty;
@@ -34,11 +35,11 @@ public class CreateBookCommandHandler : IRequestHandler<CreateBookCommand, int>
     }
     public async Task<int> Handle(CreateBookCommand request, CancellationToken cancellationToken)
     {
-        //vaildate
-        await _validator.ValidateAndThrowAsync(request, cancellationToken);
-
-        //convert to domain entity object 
+        //convert to domain entity object
         var book = _mapper.Map<Domain.Entities.Book>(request);
+
+        //add authors to book
+        book.Authors = await _bookRepository.UpdateRelatedEntityAsync(null,book.Authors);
 
         //add to database
         await _bookRepository.CreateAsync(book);
