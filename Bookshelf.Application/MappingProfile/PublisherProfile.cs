@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Bookshelf.Application.Features.Publisher.Commands;
 using Bookshelf.Application.Features.Publisher.Queries.GetAllPublishers;
 using Bookshelf.Application.Features.Publisher.Queries.GetPublisherDetails;
 using Bookshelf.Domain.Entities;
@@ -11,6 +12,8 @@ namespace Bookshelf.Application.MappingProfile
         {
             CreateMap<Publisher,PublisherDetailsDto>().ReverseMap();
             CreateMap<Publisher,PublisherDto>().ReverseMap();
+            CreateMap<CreatePublisherCommand , Publisher>();
+            CreateMap<UpdatePublisherCommand , Publisher>();
 
         }
     }
