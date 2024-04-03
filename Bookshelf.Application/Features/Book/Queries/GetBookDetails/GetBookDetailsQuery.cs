@@ -2,6 +2,7 @@
 using Bookshelf.Application.Contracts.Persistence;
 using Bookshelf.Application.Exceptions;
 using MediatR;
+using System.Linq.Expressions;
 
 namespace Bookshelf.Application.Features.Book.Queries.GetBookDetails;
 
@@ -18,7 +19,7 @@ public class GetBookDetailsQueryHandler : IRequestHandler<GetBookDetailsQuery, B
     }
     public async Task<BookDetailsDto> Handle(GetBookDetailsQuery request, CancellationToken cancellationToken)
     {
-        var book = await _bookRepository.GetBookDetailById(request.Id);
+        var book = await _bookRepository.GetByIdAsync(request.Id,new List<Expression<Func<Domain.Entities.Book, object>>>{p=>p.Authors});
 
         if (book == null)
             throw new NotFoundException(nameof(Book), request.Id);
