@@ -24,6 +24,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{8FFAC1E7-9
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bookshelf.Api", "Bookshelf.Api\Bookshelf.Api.csproj", "{EC85A949-7622-4985-BC5B-3FE23C55ED59}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookshelf.UnitTests", "Bookshelf.UnitTests\Bookshelf.UnitTests.csproj", "{C904DCB2-AF71-4839-8113-06F601202714}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -50,6 +52,10 @@ Global
 		{EC85A949-7622-4985-BC5B-3FE23C55ED59}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC85A949-7622-4985-BC5B-3FE23C55ED59}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EC85A949-7622-4985-BC5B-3FE23C55ED59}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C904DCB2-AF71-4839-8113-06F601202714}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C904DCB2-AF71-4839-8113-06F601202714}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C904DCB2-AF71-4839-8113-06F601202714}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C904DCB2-AF71-4839-8113-06F601202714}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,6 +68,7 @@ Global
 		{5C905F2D-B9B3-44C9-A5AB-B2AE0FCC6670} = {AE933CF5-55BE-452A-B247-AAAF7E715018}
 		{5BC62CD4-9384-496D-9CB8-472AE519986E} = {AE933CF5-55BE-452A-B247-AAAF7E715018}
 		{EC85A949-7622-4985-BC5B-3FE23C55ED59} = {AE933CF5-55BE-452A-B247-AAAF7E715018}
+		{C904DCB2-AF71-4839-8113-06F601202714} = {8FFAC1E7-9F39-444B-9FB6-11610AC8108C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {065AA59C-5424-4BE8-BF99-4A602ACAFEDD}
