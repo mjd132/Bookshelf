@@ -33,4 +33,17 @@ public class BookRepository : GenericRepository<Book>, IBookRepository
 
         await _context.SaveChangesAsync();
     }
+    public async Task CreateBookWithAuthorsAsync(Book bookRequestCreate)
+    {
+        var authors = await _context.Authors.Where(a => bookRequestCreate.Authors.Select(a => a.Id).ToHashSet().Contains(a.Id) ).ToListAsync();
+
+        bookRequestCreate.Authors.Clear();
+
+        foreach (var author in authors)
+            bookRequestCreate.Authors.Add(author);
+
+        await _context.Books.AddAsync(bookRequestCreate);
+
+        await _context.SaveChangesAsync();
+    }
 }

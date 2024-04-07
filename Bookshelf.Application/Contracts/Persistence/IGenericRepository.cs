@@ -12,6 +12,7 @@ public interface IGenericRepository<T> where T : BaseEntity
     Task UpdateAsync(T entity);
     Task DeleteAsync(T entity);
     Task<PaginatedList<T>> GetWithPaginationAync(int pageNumber, int pageSize);
-    Task<ICollection<TEntity>> UpdateRelatedEntityAsync<TEntity>(ICollection<TEntity> originalNavigationProperty=null, ICollection<TEntity> forUpdateNavigationProperty=null) where TEntity : BaseEntity;
+    //Task<ICollection<TEntity>> UpdateRelatedEntityAsync<TEntity>(ICollection<TEntity> originalNavigationProperty=null, ICollection<TEntity> forUpdateNavigationProperty=null) where TEntity : BaseEntity;
+
     //Task<TEntity> UpdateRelatedEntityAsync<TEntity>(TEntity originalEntity, TEntity forUpdateEntity) where TEntity : BaseEntity;
 }

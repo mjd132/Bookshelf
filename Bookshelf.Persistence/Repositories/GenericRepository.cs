@@ -90,24 +90,7 @@ public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
 
         return originalNavigationProperty;
     }
-    //public async Task<TEntity> UpdateRelatedEntityAsync<TEntity>(TEntity originalEntity, TEntity forUpdateEntity) where TEntity : BaseEntity
-    //{
-    //    if (forUpdateEntity == null)
-    //        return null;
-
-
-    //    if (originalEntity == null || originalEntity.Id != forUpdateEntity.Id)
-    //    {
-    //        originalEntity = await _context.Set<TEntity>().FirstOrDefaultAsync(p => p.Id == forUpdateEntity.Id);
-
-    //        // If originalEntity is still null, throw NotFoundException
-    //        if (originalEntity == null)
-    //            throw new NotFoundException(typeof(TEntity).Name, forUpdateEntity.Id);
-    //    }
-
-    //    return originalEntity;
-    //}
-
+    
 }
 public static class RepositoryExtensionMethods
 {
