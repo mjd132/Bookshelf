@@ -13,6 +13,7 @@ public class CreateBookCommandValidator : AbstractValidator<CreateBookCommand>
 
         RuleFor(p => p.Title).NotEmpty();
         RuleFor(q => q).MustAsync(BookTitleUnique).WithMessage("Title is repetitive");
+        RuleFor(c=>c.PublisherId).GreaterThan(0);
         //todo : ISBN validator
 
 

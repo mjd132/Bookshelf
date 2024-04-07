@@ -12,17 +12,18 @@ public class UpdateBookCommandValidator : AbstractValidator<UpdateBookCommand>
         _bookRepository = bookRepository;
 
         RuleFor(p => p.Title).NotEmpty();
-        RuleFor(q => q).MustAsync(BookTitleUnique).WithMessage("Title is repetitive");
+        //todo: RuleFor(q => q).MustAsync(BookTitleUnique).WithMessage("Title is repetitive");
         RuleFor(p => p.Id).NotNull().NotEmpty();
+        RuleFor(p=>p.PublisherId).GreaterThan(0);
 
     }
 
-    private async Task<bool> BookTitleUnique(UpdateBookCommand command, CancellationToken token)
-    {
-        var res = await _bookRepository.IsTitleUnique(command.Title);
+    //private async Task<bool> BookTitleUnique(UpdateBookCommand command, CancellationToken token)
+    //{
+    //    var res = await _bookRepository.IsTitleUnique(command.Title);
 
-        return !res;
-    }
+    //    return !res;
+    //}
 
 
 
