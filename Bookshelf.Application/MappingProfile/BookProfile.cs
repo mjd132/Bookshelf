@@ -11,7 +11,7 @@ namespace Bookshelf.Application.MappingProfile
         public BookProfile()
         {
             CreateMap<BookDto, Book>().ReverseMap();
-            CreateMap<BookDetailsDto, Book>().ReverseMap();
+            CreateMap<Book, BookDetailsDto>().ForMember(dest => dest.Publisher, opt => opt.NullSubstitute(null)).ReverseMap();
             CreateMap<CreateBookCommand, Book>();
             CreateMap<UpdateBookCommand, Book>();
 
