@@ -1,4 +1,6 @@
 ﻿using Bookshelf.Application.Features.Author.Queries.GetAllAuthors;
+using Bookshelf.Application.Features.Publisher.Queries.GetAllPublishers;
+
 namespace Bookshelf.Application.Features.Book.Queries.GetBookDetails;
 
 public class BookDetailsDto
@@ -12,8 +14,7 @@ public class BookDetailsDto
     public int PagesCount { get; set; }
     public string ISBN { get; set; } = string.Empty;
     public string Language { get; set; } = string.Empty;
-    //public int? PublisherId { get; set; }
-    //public Publisher? Publisher { get; set; }
+    public PublisherDto? Publisher { get; set; } = null;
     public float Price { get; set; }
     public DateTime CreatedAt { get; set; }
     public string CreatedBy { get; set; } = string.Empty;
