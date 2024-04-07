@@ -60,10 +60,10 @@ public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
 
         await _context.SaveChangesAsync();
     }
-    public async Task<ICollection<TEntity>> UpdateRelatedEntityAsync<TEntity>(ICollection<TEntity> originalNavigationProperty=null, ICollection<TEntity> forUpdateNavigationProperty=null) where TEntity : BaseEntity
+    public async Task<ICollection<TEntity>> UpdateRelatedEntityAsync<TEntity>(ICollection<TEntity> originalNavigationProperty = null, ICollection<TEntity> forUpdateNavigationProperty = null) where TEntity : BaseEntity
     {
-        if(originalNavigationProperty == null) originalNavigationProperty = new List<TEntity>();
-        if(forUpdateNavigationProperty == null) forUpdateNavigationProperty = new List<TEntity>();
+        if (originalNavigationProperty == null) originalNavigationProperty = new List<TEntity>();
+        if (forUpdateNavigationProperty == null) forUpdateNavigationProperty = new List<TEntity>();
 
         HashSet<int> toRemoveListId = new();
         HashSet<int> toAddListId = new();
@@ -90,6 +90,23 @@ public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
 
         return originalNavigationProperty;
     }
+    //public async Task<TEntity> UpdateRelatedEntityAsync<TEntity>(TEntity originalEntity, TEntity forUpdateEntity) where TEntity : BaseEntity
+    //{
+    //    if (forUpdateEntity == null)
+    //        return null;
+
+
+    //    if (originalEntity == null || originalEntity.Id != forUpdateEntity.Id)
+    //    {
+    //        originalEntity = await _context.Set<TEntity>().FirstOrDefaultAsync(p => p.Id == forUpdateEntity.Id);
+
+    //        // If originalEntity is still null, throw NotFoundException
+    //        if (originalEntity == null)
+    //            throw new NotFoundException(typeof(TEntity).Name, forUpdateEntity.Id);
+    //    }
+
+    //    return originalEntity;
+    //}
 
 }
 public static class RepositoryExtensionMethods
