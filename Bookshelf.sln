@@ -28,7 +28,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bookshelf.UnitTests", "Book
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{E39A698A-27DC-452C-9284-6F6518203C0A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookshelf.BlazorUI", "Bookshelf.BlazorUI\Bookshelf.BlazorUI.csproj", "{81427C04-2D75-49FF-9808-E47438212094}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bookshelf.BlazorUI", "Bookshelf.BlazorUI\Bookshelf.BlazorUI.csproj", "{81427C04-2D75-49FF-9808-E47438212094}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookshelf.Identity", "Bookshelf.Identity\Bookshelf.Identity.csproj", "{73916287-CEAB-44FB-A3C1-7A6C0351D45B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -64,6 +66,10 @@ Global
 		{81427C04-2D75-49FF-9808-E47438212094}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{81427C04-2D75-49FF-9808-E47438212094}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{81427C04-2D75-49FF-9808-E47438212094}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73916287-CEAB-44FB-A3C1-7A6C0351D45B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73916287-CEAB-44FB-A3C1-7A6C0351D45B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73916287-CEAB-44FB-A3C1-7A6C0351D45B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73916287-CEAB-44FB-A3C1-7A6C0351D45B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -79,6 +85,7 @@ Global
 		{C904DCB2-AF71-4839-8113-06F601202714} = {8FFAC1E7-9F39-444B-9FB6-11610AC8108C}
 		{E39A698A-27DC-452C-9284-6F6518203C0A} = {C98A69EA-63C0-4DC2-B3EE-62484EC7385C}
 		{81427C04-2D75-49FF-9808-E47438212094} = {E39A698A-27DC-452C-9284-6F6518203C0A}
+		{73916287-CEAB-44FB-A3C1-7A6C0351D45B} = {AE933CF5-55BE-452A-B247-AAAF7E715018}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {065AA59C-5424-4BE8-BF99-4A602ACAFEDD}
