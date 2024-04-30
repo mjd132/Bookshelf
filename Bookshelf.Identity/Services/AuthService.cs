@@ -16,13 +16,13 @@ public class AuthService : IAuthService
 {
     private readonly UserManager<ApplicationUser> _userManager;
     private readonly SignInManager<ApplicationUser> _signInManager;
-    private readonly IOptions<JwtSettings> _jwtSettings;
+    private readonly JwtSettings _jwtSettings;
 
     public AuthService(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IOptions<JwtSettings> jwtSettings)
     {
         _userManager = userManager;
         _signInManager = signInManager;
-        _jwtSettings = jwtSettings;
+        _jwtSettings = jwtSettings.Value;
     }
     public async Task<AuthResponse> Login(AuthRequest request)
     {
@@ -103,7 +103,7 @@ public class AuthService : IAuthService
             StringBuilder stringBuilder = new StringBuilder();
             foreach (var err in result.Errors)
             {
-                stringBuilder.Append("--{0}\n",err.Description);
+                stringBuilder.AppendFormat("- {0}\n",err.Description);
             }
             throw new Exception(stringBuilder.ToString());
         }
