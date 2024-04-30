@@ -1,5 +1,6 @@
 using Bookshelf.Api.Middlewares;
 using Bookshelf.Application;
+using Bookshelf.Identity;
 using Bookshelf.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,7 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddApplicationServices();
 builder.Services.AddPersistenceSevices(builder.Configuration);
-
+builder.Services.AddIdentityServices(builder.Configuration);
 builder.Services.AddControllers();
 
 builder.Services.AddCors(op =>
@@ -29,7 +30,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseCors("all");
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
